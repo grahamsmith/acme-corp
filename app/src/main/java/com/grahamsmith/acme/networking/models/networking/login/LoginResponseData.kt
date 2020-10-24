@@ -1,6 +1,6 @@
-package com.grahamsmith.acme.models.networking.login
+package com.grahamsmith.acme.networking.models.networking.login
 
-import com.grahamsmith.acme.models.networking.ApiResponseData
+import com.grahamsmith.acme.networking.models.networking.ApiResponseData
 
 class LoginResponseData(
 

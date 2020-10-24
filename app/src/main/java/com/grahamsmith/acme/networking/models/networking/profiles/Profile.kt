@@ -1,4 +1,4 @@
-package com.grahamsmith.acme.models.networking.profiles
+package com.grahamsmith.acme.networking.models.networking.profiles
 
 data class Profile(
         val name: String?,

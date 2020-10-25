@@ -41,7 +41,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_profiles_toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/fragment_profiles_toolbar"/>
 
     <ProgressBar
         android:id="@+id/fragment_profiles_progress"
@@ -57,6 +57,7 @@
         android:id="@+id/fragment_profiles_error_message_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/fragment_profiles_error_message_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

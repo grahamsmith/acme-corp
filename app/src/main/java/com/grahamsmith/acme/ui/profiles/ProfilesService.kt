@@ -13,12 +13,12 @@ class ProfilesService(private val authenticationManager: AuthenticationManager, 
         val userMessage = fetchProfilesResult.body()?.data?.userMessage.orEmpty()
 
         return if (!fetchProfilesResult.isSuccessful) {
-            LoadProfilesResult(userMessage = userMessage)
+            throw ProfilesLoadFailureException(message = userMessage)
         } else {
 
             val profiles = fetchProfilesResult.body()?.data?.profiles ?: emptyList()
 
-            LoadProfilesResult(isSuccessful = true,
+            LoadProfilesResult(
                 userMessage = userMessage,
                 profiles = profiles.sortedByDescending { y -> y.starLevel })
         }
@@ -27,7 +27,6 @@ class ProfilesService(private val authenticationManager: AuthenticationManager, 
 
 data class LoadProfilesResult(
 
-    val isSuccessful: Boolean = false,
     val userMessage: String = "",
     val profiles: List<Profile> = emptyList()
 )

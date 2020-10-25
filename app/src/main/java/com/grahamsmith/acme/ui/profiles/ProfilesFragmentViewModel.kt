@@ -2,6 +2,7 @@ package com.grahamsmith.acme.ui.profiles
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
+import com.grahamsmith.acme.authentication.exceptions.LoginFailureException
 import com.grahamsmith.acme.utils.Resource
 
 class ProfilesFragmentViewModel(private val profilesRepository: ProfilesRepository, private val profilesService: ProfilesService) : ViewModel() {
@@ -12,7 +13,15 @@ class ProfilesFragmentViewModel(private val profilesRepository: ProfilesReposito
         try {
             emit(Resource.success(data = profilesRepository.loadProfiles()))
         } catch (exception: Exception) {
-            emit(Resource.error(data = null, message = exception.message ?: "Unknown error"))
+
+            val userMessage: String =
+                if (exception is ProfilesLoadFailureException) {
+                    exception.message.orEmpty()
+                } else {
+                    "An error occurred check internet connectivity and try again"
+                }
+
+            emit(Resource.error(data = null, message = userMessage))
         }
     }
 }

@@ -8,7 +8,8 @@ import com.grahamsmith.acme.authentication.AuthenticationStore
 import com.grahamsmith.acme.authentication.EncryptedSharedPreferencesFactory
 import com.grahamsmith.acme.authentication.networking.AuthenticationService
 import com.grahamsmith.acme.networking.models.networking.Api
-import com.grahamsmith.acme.ui.LoginFragmentViewModel
+import com.grahamsmith.acme.ui.login.LoginFragmentViewModel
+import com.grahamsmith.acme.ui.profiles.ProfilesFragmentViewModel
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -76,4 +77,11 @@ class AppModule(private val app: Application) {
     @Provides
     @Singleton
     fun provideLoginFragmentViewModel(authenticationManager: AuthenticationManager) = LoginFragmentViewModel(authenticationManager)
+
+    // profiles
+
+    @Provides
+    @Singleton
+    fun provideProfilesFragmentViewModel(authenticationManager: AuthenticationManager) = ProfilesFragmentViewModel()
+
 }

@@ -3,25 +3,26 @@ package com.grahamsmith.acme
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.grahamsmith.acme.authentication.AuthenticationManager
-import com.grahamsmith.acme.ui.LoginFragment
-import com.grahamsmith.acme.ui.ProfilesFragment
+import com.grahamsmith.acme.ui.login.LoginFragment
+import com.grahamsmith.acme.ui.profiles.ProfilesFragment
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), LoginFragment.AuthenticationResultListener {
 
+    @Inject
     lateinit var authenticationManager: AuthenticationManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        (applicationContext as AcmeApplication).appComponent.inject(this)
 
-//        if(authenticationManager.isUserLoggedIn()) {
-//            showProfileFragment()
-//        } else {
-//            showLoginFragment()
-//        }
-
-        showLoginFragment()
+        if(authenticationManager.isUserLoggedIn()) {
+            showProfilesFragment()
+        } else {
+            showLoginFragment()
+        }
     }
 
     override fun onLoginSuccess() {

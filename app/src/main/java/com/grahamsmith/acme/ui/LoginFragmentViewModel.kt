@@ -1,20 +1,24 @@
 package com.grahamsmith.acme.ui
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.grahamsmith.acme.authentication.AuthenticationManager
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import com.grahamsmith.acme.authentication.networking.LoginResult
+import kotlinx.coroutines.*
 
 class LoginFragmentViewModel(private val authenticationManager: AuthenticationManager): ViewModel() {
 
-    fun logUserIn(username: String, password: String) = liveData {
+    fun logUserIn(username: String, password: String): LiveData<LoginResult> {
+        return viewModelScope.async {
+            authenticationManager.login(username, password)
+        }.liveData()
+    }
+}
 
-        viewModelScope.launch {
-            val result = withContext(Dispatchers.IO) { authenticationManager.login(username, password) }
-            emit(result)
-        }
+inline fun <reified T> Deferred<T>.liveData(): LiveData<T> {
+    return liveData {
+        emit(await())
     }
 }

@@ -1,10 +1,12 @@
 package com.grahamsmith.acme.ui
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.viewModelScope
 import com.grahamsmith.acme.AcmeApplication
 import com.grahamsmith.acme.BuildConfig
 import com.grahamsmith.acme.R
@@ -17,13 +19,17 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     @Inject
     lateinit var viewModel: LoginFragmentViewModel
 
+    lateinit var callback: AuthenticationResultListener
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        (context.applicationContext as AcmeApplication).appComponent.inject(this)
+        callback = context as AuthenticationResultListener
+    }
 
     @SuppressLint("ShowToast")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        (view.context.applicationContext as AcmeApplication).appComponent.inject(this)
 
         fragment_login_login_button.setOnClickListener {
             performLogin()
@@ -63,7 +69,11 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     }
 
     private fun finishWithSuccess(userMessage: String) {
-        //tell the main activity to move to list of profiles
+        callback.onLoginSuccess()
+    }
+
+    interface AuthenticationResultListener {
+        fun onLoginSuccess()
     }
 }
 

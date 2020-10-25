@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.grahamsmith.acme.AcmeApplication
+import com.grahamsmith.acme.BuildConfig
 import com.grahamsmith.acme.R
 import com.grahamsmith.acme.utils.getText
 import kotlinx.android.synthetic.main.fragment_login.*
@@ -15,9 +17,13 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     @Inject
     lateinit var viewModel: LoginFragmentViewModel
 
+
+
     @SuppressLint("ShowToast")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        (view.context.applicationContext as AcmeApplication).appComponent.inject(this)
 
         fragment_login_login_button.setOnClickListener {
             performLogin()

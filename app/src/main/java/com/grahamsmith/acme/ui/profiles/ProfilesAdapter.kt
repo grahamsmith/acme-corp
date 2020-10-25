@@ -38,7 +38,8 @@ class ProfilesAdapter(private val profiles: ArrayList<Profile>) :
 
                 view_holder_profile_name_text.text = profile.name.orEmpty()
                 view_holder_profile_distance_text.text = itemView.context.getString(R.string.miles_away, profile.distanceFromUser.orEmpty())
-                view_holder_profile_rating.numStars = profile.starLevel ?: 0 //todo - need clear instructions on what to do here. We could validate more and skip the view but that seems harsh. Could hide the rating?
+                view_holder_profile_rating.rating = profile.starLevel?.toFloat() ?: 0f //todo - need clear instructions on what to do here. We could validate more and skip the view but that seems harsh. Could hide the rating?
+                view_holder_profile_rating_count_text.text = itemView.context.getString(R.string.number_of_ratings, profile.numberOfRatings)
 
                 view_holder_profile_image.load(profile.profileImage) {
 

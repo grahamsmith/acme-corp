@@ -20,7 +20,7 @@ class ProfilesService(private val authenticationManager: AuthenticationManager, 
 
             LoadProfilesResult(
                 userMessage = userMessage,
-                profiles = profiles.sortedByDescending { y -> y.starLevel })
+                profiles = profiles.sortedByDescending { y -> y.numberOfRatings })
         }
     }
 }

@@ -6,6 +6,7 @@ import com.grahamsmith.acme.networking.models.networking.login.LoginRequest
 class AuthenticationService(private val api: Api) {
 
     suspend fun login(username: String, password: String): LoginResult {
+
         val response = api.login(LoginRequest(username, password))
 
         return if (response.isSuccessful) {

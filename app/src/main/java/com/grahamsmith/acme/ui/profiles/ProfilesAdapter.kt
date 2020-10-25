@@ -23,6 +23,7 @@ class ProfilesAdapter(private val profiles: ArrayList<Profile>) :
         ProfileViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.view_holder_profile, parent, false))
 
     fun addProfiles(profiles: List<Profile>) {
+
         this.profiles.apply {
             clear()
             addAll(profiles)
@@ -36,10 +37,11 @@ class ProfilesAdapter(private val profiles: ArrayList<Profile>) :
             itemView.apply {
 
                 view_holder_profile_name_text.text = profile.name.orEmpty()
-                view_holder_profile_distance_text.text = profile.distanceFromUser.orEmpty() //todo - we need to string concatenate this
+                view_holder_profile_distance_text.text = itemView.context.getString(R.string.miles_away, profile.distanceFromUser.orEmpty())
                 view_holder_profile_rating.numStars = profile.starLevel ?: 0 //todo - need clear instructions on what to do here. We could validate more and skip the view but that seems harsh. Could hide the rating?
 
                 view_holder_profile_image.load(profile.profileImage) {
+
                     crossfade(true)
                     placeholder(R.drawable.ic_baseline_account_circle)
                     transformations(CircleCropTransformation())

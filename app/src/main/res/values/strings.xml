@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Acme Trading</string>
+    <string name="miles_away">%s miles away</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="log_in">Log In</string>
+    <string name="register_prompt">Don\'t have an account?</string>
+    <string name="register">register</string>
+    <string name="retry">retry</string>
+    <string name="contact">contact</string>
+    <string name="review_rating">review rating</string>
 </resources>

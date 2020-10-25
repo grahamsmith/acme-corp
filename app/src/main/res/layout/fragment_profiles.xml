@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -24,9 +23,9 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/logo"
+                android:contentDescription="@string/app_name"
                 android:scaleType="centerCrop"
-                android:contentDescription="@string/app_name" />
+                android:src="@drawable/logo" />
 
         </RelativeLayout>
 
@@ -41,7 +40,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_profiles_toolbar"/>
+        app:layout_constraintTop_toBottomOf="@+id/fragment_profiles_toolbar" />
 
     <ProgressBar
         android:id="@+id/fragment_profiles_progress"
@@ -66,16 +65,16 @@
         android:id="@+id/fragment_profiles_error_message_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Retry"
+        android:text="@string/retry"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.Group
+        android:id="@+id/fragment_profiles_error_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/fragment_profiles_error_group"
         android:visibility="invisible"
         app:constraint_referenced_ids="fragment_profiles_error_message_text, fragment_profiles_error_message_button" />
 

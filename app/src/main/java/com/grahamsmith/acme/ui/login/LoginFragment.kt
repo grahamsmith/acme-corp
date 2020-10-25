@@ -45,6 +45,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     }
 
     private fun performLogin() {
+
         viewModel.logUserIn(
             fragment_login_username_input.getText(),
             fragment_login_password_input.getText()

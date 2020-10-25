@@ -6,6 +6,7 @@ import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.grahamsmith.acme.authentication.AuthenticationManager
 import com.grahamsmith.acme.authentication.networking.LoginResult
+import com.grahamsmith.acme.utils.liveData
 import kotlinx.coroutines.*
 
 class LoginFragmentViewModel(private val authenticationManager: AuthenticationManager): ViewModel() {
@@ -14,11 +15,5 @@ class LoginFragmentViewModel(private val authenticationManager: AuthenticationMa
         return viewModelScope.async {
             authenticationManager.login(username, password)
         }.liveData()
-    }
-}
-
-inline fun <reified T> Deferred<T>.liveData(): LiveData<T> {
-    return liveData {
-        emit(await())
     }
 }

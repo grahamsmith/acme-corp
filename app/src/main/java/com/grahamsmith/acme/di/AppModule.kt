@@ -10,6 +10,8 @@ import com.grahamsmith.acme.authentication.networking.AuthenticationService
 import com.grahamsmith.acme.networking.models.networking.Api
 import com.grahamsmith.acme.ui.login.LoginFragmentViewModel
 import com.grahamsmith.acme.ui.profiles.ProfilesFragmentViewModel
+import com.grahamsmith.acme.ui.profiles.ProfilesRepository
+import com.grahamsmith.acme.ui.profiles.ProfilesService
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -19,6 +21,8 @@ import javax.inject.Singleton
 
 @Module
 class AppModule(private val app: Application) {
+
+    //todo - create smaller more precise modules e.g. android, authentication, networking, login etc
 
     @Provides
     @Singleton
@@ -52,7 +56,7 @@ class AppModule(private val app: Application) {
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://ho0lwtvpzh.execute-api.us-east-1.amazonaws.com")
+            .baseUrl("https://ho0lwtvpzh.execute-api.us-east-1.amazonaws.com/")
             .addConverterFactory(MoshiConverterFactory.create())
             .client(okHttpClient)
             .build()
@@ -82,6 +86,14 @@ class AppModule(private val app: Application) {
 
     @Provides
     @Singleton
-    fun provideProfilesFragmentViewModel(authenticationManager: AuthenticationManager) = ProfilesFragmentViewModel()
+    fun provideProfilesFragmentViewModel(profilesRepository: ProfilesRepository, profilesService: ProfilesService) = ProfilesFragmentViewModel(profilesRepository, profilesService)
+
+    @Provides
+    @Singleton
+    fun provideProfilesRepository(profilesService: ProfilesService) = ProfilesRepository(profilesService)
+
+    @Provides
+    @Singleton
+    fun provideProfilesService(authenticationManager: AuthenticationManager, api: Api) = ProfilesService(authenticationManager, api)
 
 }

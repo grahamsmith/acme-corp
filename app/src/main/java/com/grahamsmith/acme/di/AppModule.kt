@@ -3,7 +3,6 @@ package com.grahamsmith.acme.di
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
-import androidx.annotation.NonNull
 import com.grahamsmith.acme.authentication.AuthenticationManager
 import com.grahamsmith.acme.authentication.AuthenticationStore
 import com.grahamsmith.acme.authentication.EncryptedSharedPreferencesFactory
@@ -12,7 +11,6 @@ import com.grahamsmith.acme.networking.models.networking.Api
 import com.grahamsmith.acme.ui.LoginFragmentViewModel
 import dagger.Module
 import dagger.Provides
-import okhttp3.OkHttp
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import javax.inject.Singleton
@@ -52,7 +50,7 @@ class AppModule(private val app: Application) {
     @Provides
     fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("YOUR_BASE_URL")
+            .baseUrl("https://ho0lwtvpzh.execute-api.us-east-1.amazonaws.com")
             .client(okHttpClient)
             .build()
     }

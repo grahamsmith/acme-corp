@@ -8,9 +8,9 @@ import retrofit2.http.*
 
 interface Api {
 
-    @POST("https://ho0lwtvpzh.execute-api.us-east-1.amazonaws.com/DummyLogin")
+    @POST("/DummyLogin")
     suspend fun login(@Body loginRequest: LoginRequest): Response<LoginResponse>
 
-    @GET("https://ypznjlmial.execute-api.us-east-1.amazonaws.com/DummyProfileList")
+    @GET("/DummyProfileList")
     suspend fun getProfiles(@Header("authorization") authToken: String): Response<ProfilesResponse>
 }

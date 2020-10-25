@@ -1,19 +1,19 @@
 package com.grahamsmith.acme.ui.login
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
-import androidx.lifecycle.viewModelScope
 import com.grahamsmith.acme.authentication.AuthenticationManager
-import com.grahamsmith.acme.authentication.networking.LoginResult
-import com.grahamsmith.acme.utils.liveData
-import kotlinx.coroutines.*
+import com.grahamsmith.acme.utils.Resource
 
 class LoginFragmentViewModel(private val authenticationManager: AuthenticationManager): ViewModel() {
 
-    fun logUserIn(username: String, password: String): LiveData<LoginResult> {
-        return viewModelScope.async {
-            authenticationManager.login(username, password)
-        }.liveData()
+    fun logUserIn(username: String, password: String) = liveData {
+
+        emit(Resource.loading(data = null))
+        try {
+            emit(Resource.success(data = authenticationManager.login(username, password)))
+        } catch (exception: Exception) {
+            emit(Resource.error(data = null, message = exception.message ?: "Unknown error"))
+        }
     }
 }

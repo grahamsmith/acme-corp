@@ -1,8 +1,8 @@
 package com.grahamsmith.acme.authentication
 
+import com.grahamsmith.acme.authentication.exceptions.LoginFailureException
 import com.grahamsmith.acme.authentication.models.User
 import com.grahamsmith.acme.authentication.networking.AuthenticationService
-import com.grahamsmith.acme.authentication.networking.LoginResult
 
 class AuthenticationManager(
     private val authenticationStore: AuthenticationStore,
@@ -13,7 +13,7 @@ class AuthenticationManager(
 
     fun getUser() = authenticationStore.getCurrentUser()
 
-    suspend fun login(username: String, password: String): LoginResult {
+    suspend fun login(username: String, password: String): Boolean {
 
         val loginResult = authenticationService.login(username, password)
 
@@ -21,10 +21,12 @@ class AuthenticationManager(
 
             val user = User(username, loginResult.authToken, loginResult.refreshToken)
             storeUser(user)
+            return true
+        } else {
+            throw LoginFailureException(loginResult.userMessage)
         }
-
-        return loginResult
     }
 
     private fun storeUser(user: User) = authenticationStore.addUser(user)
 }
+

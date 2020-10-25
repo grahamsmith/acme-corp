@@ -26,6 +26,7 @@ class ProfilesService(private val authenticationManager: AuthenticationManager, 
 }
 
 data class LoadProfilesResult(
+
     val isSuccessful: Boolean = false,
     val userMessage: String = "",
     val profiles: List<Profile> = emptyList()

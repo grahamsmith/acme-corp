@@ -3,6 +3,8 @@ package com.grahamsmith.acme.di
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
+import android.content.res.Resources
+import com.grahamsmith.acme.R
 import com.grahamsmith.acme.authentication.AuthenticationManager
 import com.grahamsmith.acme.authentication.AuthenticationStore
 import com.grahamsmith.acme.authentication.EncryptedSharedPreferencesFactory
@@ -18,6 +20,7 @@ import dagger.Provides
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -28,6 +31,11 @@ class AppModule(private val app: Application) {
     @Provides
     @Singleton
     fun provideContext(): Context = app
+
+    @Provides
+    @Singleton
+    @Named("GenericErrorMessage")
+    fun provideGenericErrorMessage(): String = app.resources.getString(R.string.generic_request_error_message)
 
     //authentication
 
@@ -87,13 +95,13 @@ class AppModule(private val app: Application) {
 
     @Provides
     @Singleton
-    fun provideLoginFragmentViewModel(authenticationManager: AuthenticationManager) = LoginFragmentViewModel(authenticationManager)
+    fun provideLoginFragmentViewModel(authenticationManager: AuthenticationManager, @Named("GenericErrorMessage") genericErrorMessageString: String) = LoginFragmentViewModel(authenticationManager, genericErrorMessageString)
 
     // profiles
 
     @Provides
     @Singleton
-    fun provideProfilesFragmentViewModel(profilesRepository: ProfilesRepository) = ProfilesFragmentViewModel(profilesRepository)
+    fun provideProfilesFragmentViewModel(profilesRepository: ProfilesRepository, @Named("GenericErrorMessage") genericErrorMessageString: String) = ProfilesFragmentViewModel(profilesRepository, genericErrorMessageString)
 
     @Provides
     @Singleton

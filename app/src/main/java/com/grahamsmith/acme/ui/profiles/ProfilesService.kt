@@ -13,7 +13,7 @@ class ProfilesService(private val authenticationManager: AuthenticationManager, 
         val userMessage = fetchProfilesResult.body()?.data?.userMessage.orEmpty()
 
         return if (!fetchProfilesResult.isSuccessful) {
-            throw ProfilesLoadFailureException(message = userMessage)
+            throw ProfilesLoadFailureException(userMessage)
         } else {
 
             val profiles = fetchProfilesResult.body()?.data?.profiles ?: emptyList()

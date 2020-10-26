@@ -5,7 +5,7 @@ import androidx.lifecycle.liveData
 import com.grahamsmith.acme.authentication.exceptions.LoginFailureException
 import com.grahamsmith.acme.utils.Resource
 
-class ProfilesFragmentViewModel(private val profilesRepository: ProfilesRepository) : ViewModel() {
+class ProfilesFragmentViewModel(private val profilesRepository: ProfilesRepository, private val genericErrorMessage: String) : ViewModel() {
 
     fun loadProfiles() = liveData {
 
@@ -16,7 +16,7 @@ class ProfilesFragmentViewModel(private val profilesRepository: ProfilesReposito
 
             val userMessage: String =
                 if (exception is ProfilesLoadFailureException) {
-                    exception.message.orEmpty()
+                    exception.userMessage
                 } else {
                     "An error occurred check internet connectivity and try again"
                 }

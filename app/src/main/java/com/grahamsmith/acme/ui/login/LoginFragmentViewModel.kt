@@ -6,7 +6,7 @@ import com.grahamsmith.acme.authentication.AuthenticationManager
 import com.grahamsmith.acme.authentication.exceptions.LoginFailureException
 import com.grahamsmith.acme.utils.Resource
 
-class LoginFragmentViewModel(private val authenticationManager: AuthenticationManager) :
+class LoginFragmentViewModel(private val authenticationManager: AuthenticationManager, private val genericErrorMessage: String) :
     ViewModel() {
 
     fun logUserIn(username: String, password: String) = liveData {
@@ -18,9 +18,9 @@ class LoginFragmentViewModel(private val authenticationManager: AuthenticationMa
 
             val userMessage: String =
                 if (exception is LoginFailureException) {
-                    exception.message.orEmpty()
+                    exception.userMessage
                 } else {
-                    "An error occurred check internet connectivity and try again"
+                    genericErrorMessage
                 }
 
             emit(Resource.error(data = null, message = userMessage))

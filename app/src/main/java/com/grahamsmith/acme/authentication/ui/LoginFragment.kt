@@ -1,8 +1,7 @@
-package com.grahamsmith.acme.ui.login
+package com.grahamsmith.acme.authentication.ui
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast

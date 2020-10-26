@@ -10,10 +10,10 @@ import com.grahamsmith.acme.authentication.EncryptedSharedPreferencesFactory
 import com.grahamsmith.acme.authentication.networking.AuthenticationService
 import com.grahamsmith.acme.networking.models.Api
 import com.grahamsmith.acme.ui.MainActivityViewModel
-import com.grahamsmith.acme.ui.login.LoginFragmentViewModel
-import com.grahamsmith.acme.ui.profiles.ProfilesFragmentViewModel
-import com.grahamsmith.acme.ui.profiles.ProfilesRepository
-import com.grahamsmith.acme.ui.profiles.ProfilesService
+import com.grahamsmith.acme.authentication.ui.LoginFragmentViewModel
+import com.grahamsmith.acme.profiles.ui.ProfilesFragmentViewModel
+import com.grahamsmith.acme.profiles.repositories.ProfilesRepository
+import com.grahamsmith.acme.profiles.networking.ProfilesService
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient

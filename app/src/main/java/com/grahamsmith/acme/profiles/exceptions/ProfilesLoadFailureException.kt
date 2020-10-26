@@ -1,4 +1,4 @@
-package com.grahamsmith.acme.ui.profiles
+package com.grahamsmith.acme.profiles.exceptions
 
 import java.lang.RuntimeException
 

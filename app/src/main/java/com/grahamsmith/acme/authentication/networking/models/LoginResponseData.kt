@@ -1,6 +1,6 @@
-package com.grahamsmith.acme.networking.models.networking.login
+package com.grahamsmith.acme.authentication.networking.models
 
-import com.grahamsmith.acme.networking.models.networking.ApiResponseData
+import com.grahamsmith.acme.networking.models.ApiResponseData
 import com.squareup.moshi.Json
 
 class LoginResponseData(

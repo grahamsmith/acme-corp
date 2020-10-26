@@ -1,4 +1,4 @@
-package com.grahamsmith.acme.ui.profiles
+package com.grahamsmith.acme.profiles.adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.CircleCropTransformation
 import com.grahamsmith.acme.R
-import com.grahamsmith.acme.networking.models.profiles.Profile
+import com.grahamsmith.acme.profiles.networking.models.Profile
 import kotlinx.android.synthetic.main.view_holder_profile.view.*
 
 class ProfilesAdapter(private val profiles: ArrayList<Profile>) :

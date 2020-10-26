@@ -1,4 +1,4 @@
-package com.grahamsmith.acme.ui.profiles
+package com.grahamsmith.acme.profiles.ui
 
 import android.content.Context
 import android.os.Bundle
@@ -6,7 +6,8 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import com.grahamsmith.acme.AcmeApplication
 import com.grahamsmith.acme.R
-import com.grahamsmith.acme.networking.models.profiles.Profile
+import com.grahamsmith.acme.profiles.networking.models.Profile
+import com.grahamsmith.acme.profiles.adapters.ProfilesAdapter
 import com.grahamsmith.acme.utils.Status
 import kotlinx.android.synthetic.main.fragment_profiles.*
 import javax.inject.Inject

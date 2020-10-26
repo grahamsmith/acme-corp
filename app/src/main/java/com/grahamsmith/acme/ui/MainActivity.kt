@@ -4,9 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.grahamsmith.acme.AcmeApplication
 import com.grahamsmith.acme.R
-import com.grahamsmith.acme.authentication.AuthenticationManager
-import com.grahamsmith.acme.ui.login.LoginFragment
-import com.grahamsmith.acme.ui.profiles.ProfilesFragment
+import com.grahamsmith.acme.authentication.ui.LoginFragment
+import com.grahamsmith.acme.profiles.ui.ProfilesFragment
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), LoginFragment.AuthenticationResultListener {

@@ -1,4 +1,4 @@
-package com.grahamsmith.acme.ui.login
+package com.grahamsmith.acme.authentication.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData

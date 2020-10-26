@@ -1,4 +1,7 @@
-package com.grahamsmith.acme.ui.profiles
+package com.grahamsmith.acme.profiles.repositories
+
+import com.grahamsmith.acme.profiles.networking.LoadProfilesResult
+import com.grahamsmith.acme.profiles.networking.ProfilesService
 
 class ProfilesRepository(private val profilesService: ProfilesService) {
 

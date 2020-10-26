@@ -1,8 +1,9 @@
-package com.grahamsmith.acme.ui.profiles
+package com.grahamsmith.acme.profiles.networking
 
 import com.grahamsmith.acme.authentication.AuthenticationManager
 import com.grahamsmith.acme.networking.models.Api
-import com.grahamsmith.acme.networking.models.profiles.Profile
+import com.grahamsmith.acme.profiles.networking.models.Profile
+import com.grahamsmith.acme.profiles.exceptions.ProfilesLoadFailureException
 
 class ProfilesService(private val authenticationManager: AuthenticationManager, private val api: Api) {
 

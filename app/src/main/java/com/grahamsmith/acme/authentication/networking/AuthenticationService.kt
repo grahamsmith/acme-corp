@@ -1,7 +1,7 @@
 package com.grahamsmith.acme.authentication.networking
 
 import com.grahamsmith.acme.networking.models.Api
-import com.grahamsmith.acme.networking.models.login.LoginRequest
+import com.grahamsmith.acme.authentication.networking.models.LoginRequest
 
 class AuthenticationService(private val api: Api) {
 

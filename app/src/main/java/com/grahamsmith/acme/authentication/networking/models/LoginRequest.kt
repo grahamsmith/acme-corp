@@ -1,4 +1,4 @@
-package com.grahamsmith.acme.networking.models.networking.login
+package com.grahamsmith.acme.authentication.networking.models
 
 import com.squareup.moshi.Json
 

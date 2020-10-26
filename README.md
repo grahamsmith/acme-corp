@@ -1,9 +1,11 @@
 # Acme Corp
 
-Demonstration - this is a large GIF
+- Demonstration - this is a large GIF
+
 ![acme-corp](https://user-images.githubusercontent.com/1571527/97123020-953b8e80-1721-11eb-9c2b-545be7395326.gif)
 
-Snackbar error handling for logging in
+- Snackbar error handling for logging in
+
 ![acme-corp-snackbar](https://user-images.githubusercontent.com/1571527/97123024-9b316f80-1721-11eb-8309-c8ced5303338.gif)
 
 ## Features

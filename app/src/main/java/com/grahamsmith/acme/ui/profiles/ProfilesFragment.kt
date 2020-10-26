@@ -6,7 +6,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import com.grahamsmith.acme.AcmeApplication
 import com.grahamsmith.acme.R
-import com.grahamsmith.acme.networking.models.networking.profiles.Profile
+import com.grahamsmith.acme.networking.models.profiles.Profile
 import com.grahamsmith.acme.utils.Status
 import kotlinx.android.synthetic.main.fragment_profiles.*
 import javax.inject.Inject

@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.CircleCropTransformation
 import com.grahamsmith.acme.R
-import com.grahamsmith.acme.networking.models.networking.profiles.Profile
+import com.grahamsmith.acme.networking.models.profiles.Profile
 import kotlinx.android.synthetic.main.view_holder_profile.view.*
 
 class ProfilesAdapter(private val profiles: ArrayList<Profile>) :

@@ -3,13 +3,12 @@ package com.grahamsmith.acme.di
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
-import android.content.res.Resources
 import com.grahamsmith.acme.R
 import com.grahamsmith.acme.authentication.AuthenticationManager
 import com.grahamsmith.acme.authentication.AuthenticationStore
 import com.grahamsmith.acme.authentication.EncryptedSharedPreferencesFactory
 import com.grahamsmith.acme.authentication.networking.AuthenticationService
-import com.grahamsmith.acme.networking.models.networking.Api
+import com.grahamsmith.acme.networking.models.Api
 import com.grahamsmith.acme.ui.MainActivityViewModel
 import com.grahamsmith.acme.ui.login.LoginFragmentViewModel
 import com.grahamsmith.acme.ui.profiles.ProfilesFragmentViewModel

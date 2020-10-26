@@ -1,4 +1,4 @@
-package com.grahamsmith.acme.networking.models.networking
+package com.grahamsmith.acme.networking.models
 
 interface ApiResponse<T> {
     val meta: ResponseMeta

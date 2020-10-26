@@ -1,8 +1,8 @@
-package com.grahamsmith.acme.networking.models.networking
+package com.grahamsmith.acme.networking.models
 
-import com.grahamsmith.acme.networking.models.networking.login.LoginRequest
-import com.grahamsmith.acme.networking.models.networking.login.LoginResponse
-import com.grahamsmith.acme.networking.models.networking.profiles.ProfilesResponse
+import com.grahamsmith.acme.networking.models.login.LoginRequest
+import com.grahamsmith.acme.networking.models.login.LoginResponse
+import com.grahamsmith.acme.networking.models.profiles.ProfilesResponse
 import retrofit2.Response
 import retrofit2.http.*
 

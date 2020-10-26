@@ -93,7 +93,7 @@ class AppModule(private val app: Application) {
 
     @Provides
     @Singleton
-    fun provideProfilesFragmentViewModel(profilesRepository: ProfilesRepository, profilesService: ProfilesService) = ProfilesFragmentViewModel(profilesRepository, profilesService)
+    fun provideProfilesFragmentViewModel(profilesRepository: ProfilesRepository) = ProfilesFragmentViewModel(profilesRepository)
 
     @Provides
     @Singleton

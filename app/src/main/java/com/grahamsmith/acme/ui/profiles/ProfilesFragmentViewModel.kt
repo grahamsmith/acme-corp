@@ -5,7 +5,7 @@ import androidx.lifecycle.liveData
 import com.grahamsmith.acme.authentication.exceptions.LoginFailureException
 import com.grahamsmith.acme.utils.Resource
 
-class ProfilesFragmentViewModel(private val profilesRepository: ProfilesRepository, private val profilesService: ProfilesService) : ViewModel() {
+class ProfilesFragmentViewModel(private val profilesRepository: ProfilesRepository) : ViewModel() {
 
     fun loadProfiles() = liveData {
 

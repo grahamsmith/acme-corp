@@ -7,6 +7,7 @@ import com.grahamsmith.acme.R
 import com.grahamsmith.acme.authentication.AuthenticationManager
 import com.grahamsmith.acme.authentication.AuthenticationStore
 import com.grahamsmith.acme.authentication.EncryptedSharedPreferencesFactory
+import com.grahamsmith.acme.authentication.IAuthenticationManager
 import com.grahamsmith.acme.authentication.networking.AuthenticationService
 import com.grahamsmith.acme.authentication.ui.LoginFragmentViewModel
 import com.grahamsmith.acme.networking.models.WebApi
@@ -63,7 +64,7 @@ class AppModule(private val app: Application) {
 
     @Provides
     @Singleton
-    fun provideAuthenticationManager(authenticationStore: AuthenticationStore, authenticationService: AuthenticationService) = AuthenticationManager(authenticationStore, authenticationService)
+    fun provideAuthenticationManager(authenticationStore: AuthenticationStore, authenticationService: AuthenticationService): IAuthenticationManager = AuthenticationManager(authenticationStore, authenticationService)
 
     // networking
 
@@ -96,13 +97,13 @@ class AppModule(private val app: Application) {
 
     @Provides
     @Singleton
-    fun provideMainActivityViewModel(authenticationManager: AuthenticationManager) = MainActivityViewModel(authenticationManager)
+    fun provideMainActivityViewModel(authenticationManager: IAuthenticationManager) = MainActivityViewModel(authenticationManager)
 
     // login
 
     @Provides
     @Singleton
-    fun provideLoginFragmentViewModel(authenticationManager: AuthenticationManager, @Named("GenericErrorMessage") genericErrorMessageString: String) = LoginFragmentViewModel(authenticationManager, genericErrorMessageString)
+    fun provideLoginFragmentViewModel(authenticationManager: IAuthenticationManager, @Named("GenericErrorMessage") genericErrorMessageString: String) = LoginFragmentViewModel(authenticationManager, genericErrorMessageString)
 
     // profiles
 
@@ -116,6 +117,6 @@ class AppModule(private val app: Application) {
 
     @Provides
     @Singleton
-    fun provideProfilesService(authenticationManager: AuthenticationManager, webApi: WebApi) = ProfilesService(authenticationManager, webApi)
+    fun provideProfilesService(authenticationManager: IAuthenticationManager, webApi: WebApi) = ProfilesService(authenticationManager, webApi)
 
 }

@@ -7,13 +7,13 @@ import com.grahamsmith.acme.authentication.networking.AuthenticationService
 class AuthenticationManager(
     private val authenticationStore: AuthenticationStore,
     private val authenticationService: AuthenticationService
-) {
+) : IAuthenticationManager {
 
-    fun isUserLoggedIn() = authenticationStore.isUserLoggedIn()
+    override fun isUserLoggedIn() = authenticationStore.isUserLoggedIn()
 
-    fun getUser() = authenticationStore.getCurrentUser()
+    override fun getUser() = authenticationStore.getCurrentUser()
 
-    suspend fun login(username: String, password: String): Boolean {
+    override suspend fun login(username: String, password: String): Boolean {
 
         val loginResult = authenticationService.login(username, password)
 
@@ -27,6 +27,14 @@ class AuthenticationManager(
         }
     }
 
-    private fun storeUser(user: User) = authenticationStore.addUser(user)
+    override fun storeUser(user: User) = authenticationStore.addUser(user)
+}
+
+interface IAuthenticationManager {
+
+    fun isUserLoggedIn(): Boolean
+    fun getUser(): User
+    suspend fun login(username: String, password: String): Boolean
+    fun storeUser(user: User)
 }
 

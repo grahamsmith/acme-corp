@@ -1,7 +1,9 @@
-package com.grahamsmith.acme
+package com.grahamsmith.acme.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.grahamsmith.acme.AcmeApplication
+import com.grahamsmith.acme.R
 import com.grahamsmith.acme.authentication.AuthenticationManager
 import com.grahamsmith.acme.ui.login.LoginFragment
 import com.grahamsmith.acme.ui.profiles.ProfilesFragment
@@ -10,7 +12,7 @@ import javax.inject.Inject
 class MainActivity : AppCompatActivity(), LoginFragment.AuthenticationResultListener {
 
     @Inject
-    lateinit var authenticationManager: AuthenticationManager
+    lateinit var viewModel: MainActivityViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -18,7 +20,7 @@ class MainActivity : AppCompatActivity(), LoginFragment.AuthenticationResultList
         setContentView(R.layout.activity_main)
         (applicationContext as AcmeApplication).appComponent.inject(this)
 
-        if(authenticationManager.isUserLoggedIn()) {
+        if(viewModel.isUserLoggedIn()) {
             showProfilesFragment()
         } else {
             showLoginFragment()

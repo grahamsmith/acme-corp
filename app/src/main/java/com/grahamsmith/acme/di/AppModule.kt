@@ -8,6 +8,7 @@ import com.grahamsmith.acme.authentication.AuthenticationStore
 import com.grahamsmith.acme.authentication.EncryptedSharedPreferencesFactory
 import com.grahamsmith.acme.authentication.networking.AuthenticationService
 import com.grahamsmith.acme.networking.models.networking.Api
+import com.grahamsmith.acme.ui.MainActivityViewModel
 import com.grahamsmith.acme.ui.login.LoginFragmentViewModel
 import com.grahamsmith.acme.ui.profiles.ProfilesFragmentViewModel
 import com.grahamsmith.acme.ui.profiles.ProfilesRepository
@@ -75,6 +76,12 @@ class AppModule(private val app: Application) {
             .followRedirects(false)
             .build()
     }
+
+    // main activity
+
+    @Provides
+    @Singleton
+    fun provideMainActivityViewModel(authenticationManager: AuthenticationManager) = MainActivityViewModel(authenticationManager)
 
     // login
 

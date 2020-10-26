@@ -1,6 +1,7 @@
 package com.grahamsmith.acme.di
 
-import com.grahamsmith.acme.MainActivity
+import com.grahamsmith.acme.ui.MainActivity
+import com.grahamsmith.acme.ui.MainActivityViewModel
 import com.grahamsmith.acme.ui.login.LoginFragment
 import com.grahamsmith.acme.ui.profiles.ProfilesFragment
 import dagger.Component

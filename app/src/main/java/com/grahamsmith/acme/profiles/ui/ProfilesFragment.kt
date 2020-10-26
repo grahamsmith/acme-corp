@@ -6,8 +6,8 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import com.grahamsmith.acme.AcmeApplication
 import com.grahamsmith.acme.R
-import com.grahamsmith.acme.profiles.networking.models.Profile
 import com.grahamsmith.acme.profiles.adapters.ProfilesAdapter
+import com.grahamsmith.acme.profiles.networking.models.Profile
 import com.grahamsmith.acme.utils.Status
 import kotlinx.android.synthetic.main.fragment_profiles.*
 import javax.inject.Inject
@@ -20,6 +20,7 @@ class ProfilesFragment : Fragment(R.layout.fragment_profiles) {
     private val adapter: ProfilesAdapter = ProfilesAdapter(arrayListOf())
 
     override fun onAttach(context: Context) {
+
         super.onAttach(context)
         (context.applicationContext as AcmeApplication).appComponent.inject(this)
     }
@@ -55,6 +56,7 @@ class ProfilesFragment : Fragment(R.layout.fragment_profiles) {
     private fun renderProfiles(profiles: List<Profile>) {
 
         adapter.apply {
+
             addProfiles(profiles)
             notifyDataSetChanged()
         }

@@ -8,12 +8,12 @@ import com.grahamsmith.acme.authentication.AuthenticationManager
 import com.grahamsmith.acme.authentication.AuthenticationStore
 import com.grahamsmith.acme.authentication.EncryptedSharedPreferencesFactory
 import com.grahamsmith.acme.authentication.networking.AuthenticationService
-import com.grahamsmith.acme.networking.models.WebApi
-import com.grahamsmith.acme.ui.MainActivityViewModel
 import com.grahamsmith.acme.authentication.ui.LoginFragmentViewModel
-import com.grahamsmith.acme.profiles.ui.ProfilesFragmentViewModel
-import com.grahamsmith.acme.profiles.repositories.ProfilesRepository
+import com.grahamsmith.acme.networking.models.WebApi
 import com.grahamsmith.acme.profiles.networking.ProfilesService
+import com.grahamsmith.acme.profiles.repositories.ProfilesRepository
+import com.grahamsmith.acme.profiles.ui.ProfilesFragmentViewModel
+import com.grahamsmith.acme.ui.MainActivityViewModel
 import dagger.Module
 import dagger.Provides
 import okhttp3.Cache

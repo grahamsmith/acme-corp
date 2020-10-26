@@ -10,6 +10,7 @@ class AcmeApplication : Application() {
     lateinit var appComponent: AppComponent
 
     override fun onCreate() {
+
         super.onCreate()
         appComponent = initDagger(this)
     }

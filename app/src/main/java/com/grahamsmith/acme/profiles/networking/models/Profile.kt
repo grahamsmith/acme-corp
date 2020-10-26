@@ -3,6 +3,7 @@ package com.grahamsmith.acme.profiles.networking.models
 import com.squareup.moshi.Json
 
 data class Profile(
+
         @field:Json(name = "name") val name: String?,
         @field:Json(name = "star_level") val starLevel: Int?,
         @field:Json(name = "distance_from_user") val distanceFromUser: String?,

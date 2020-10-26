@@ -1,7 +1,7 @@
 package com.grahamsmith.acme.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.grahamsmith.acme.AcmeApplication
 import com.grahamsmith.acme.R
 import com.grahamsmith.acme.authentication.ui.LoginFragment
@@ -26,17 +26,17 @@ class MainActivity : AppCompatActivity(), LoginFragment.AuthenticationResultList
         }
     }
 
-    override fun onLoginSuccess() {
-        showProfilesFragment()
-    }
+    override fun onLoginSuccess() = showProfilesFragment()
 
     private fun showProfilesFragment() {
+
         supportFragmentManager.beginTransaction()
             .replace(R.id.activity_main_fragment_container, ProfilesFragment())
             .commit()
     }
 
     private fun showLoginFragment() {
+
         supportFragmentManager.beginTransaction()
             .replace(R.id.activity_main_fragment_container, LoginFragment())
             .commit()

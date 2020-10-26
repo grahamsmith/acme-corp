@@ -2,8 +2,8 @@ package com.grahamsmith.acme.profiles.networking
 
 import com.grahamsmith.acme.authentication.AuthenticationManager
 import com.grahamsmith.acme.networking.models.WebApi
-import com.grahamsmith.acme.profiles.networking.models.Profile
 import com.grahamsmith.acme.profiles.exceptions.ProfilesLoadFailureException
+import com.grahamsmith.acme.profiles.networking.models.Profile
 
 class ProfilesService(private val authenticationManager: AuthenticationManager, private val webApi: WebApi) {
 

@@ -4,7 +4,10 @@ import com.grahamsmith.acme.authentication.networking.models.LoginRequest
 import com.grahamsmith.acme.authentication.networking.models.LoginResponse
 import com.grahamsmith.acme.profiles.networking.models.ProfilesResponse
 import retrofit2.Response
-import retrofit2.http.*
+import retrofit2.http.Body
+import retrofit2.http.GET
+import retrofit2.http.Header
+import retrofit2.http.POST
 
 interface WebApi {
 

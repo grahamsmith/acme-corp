@@ -25,6 +25,7 @@ class ProfilesAdapter(private val profiles: ArrayList<Profile>) :
     fun addProfiles(profiles: List<Profile>) {
 
         this.profiles.apply {
+
             clear()
             addAll(profiles)
         }

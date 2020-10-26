@@ -8,7 +8,7 @@ import com.grahamsmith.acme.authentication.AuthenticationManager
 import com.grahamsmith.acme.authentication.AuthenticationStore
 import com.grahamsmith.acme.authentication.EncryptedSharedPreferencesFactory
 import com.grahamsmith.acme.authentication.networking.AuthenticationService
-import com.grahamsmith.acme.networking.models.Api
+import com.grahamsmith.acme.networking.models.WebApi
 import com.grahamsmith.acme.ui.MainActivityViewModel
 import com.grahamsmith.acme.authentication.ui.LoginFragmentViewModel
 import com.grahamsmith.acme.profiles.ui.ProfilesFragmentViewModel
@@ -52,7 +52,7 @@ class AppModule(private val app: Application) {
 
     @Provides
     @Singleton
-    fun provideAuthenticationService(api: Api) = AuthenticationService(api)
+    fun provideAuthenticationService(webApi: WebApi) = AuthenticationService(webApi)
 
     @Provides
     @Singleton
@@ -72,8 +72,8 @@ class AppModule(private val app: Application) {
 
     @Singleton
     @Provides
-    fun provideApi(retrofit: Retrofit): Api {
-        return retrofit.create(Api::class.java)
+    fun provideApi(retrofit: Retrofit): WebApi {
+        return retrofit.create(WebApi::class.java)
     }
 
     @Singleton
@@ -108,6 +108,6 @@ class AppModule(private val app: Application) {
 
     @Provides
     @Singleton
-    fun provideProfilesService(authenticationManager: AuthenticationManager, api: Api) = ProfilesService(authenticationManager, api)
+    fun provideProfilesService(authenticationManager: AuthenticationManager, webApi: WebApi) = ProfilesService(authenticationManager, webApi)
 
 }

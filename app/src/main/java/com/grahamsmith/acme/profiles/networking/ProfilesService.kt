@@ -1,15 +1,15 @@
 package com.grahamsmith.acme.profiles.networking
 
 import com.grahamsmith.acme.authentication.AuthenticationManager
-import com.grahamsmith.acme.networking.models.Api
+import com.grahamsmith.acme.networking.models.WebApi
 import com.grahamsmith.acme.profiles.networking.models.Profile
 import com.grahamsmith.acme.profiles.exceptions.ProfilesLoadFailureException
 
-class ProfilesService(private val authenticationManager: AuthenticationManager, private val api: Api) {
+class ProfilesService(private val authenticationManager: AuthenticationManager, private val webApi: WebApi) {
 
     suspend fun fetchProfiles(): LoadProfilesResult {
 
-        val fetchProfilesResult = api.getProfiles(authenticationManager.getUser().authToken)
+        val fetchProfilesResult = webApi.getProfiles(authenticationManager.getUser().authToken)
 
         val userMessage = fetchProfilesResult.body()?.data?.userMessage.orEmpty()
 

@@ -1,13 +1,13 @@
 package com.grahamsmith.acme.authentication.networking
 
-import com.grahamsmith.acme.networking.models.Api
+import com.grahamsmith.acme.networking.models.WebApi
 import com.grahamsmith.acme.authentication.networking.models.LoginRequest
 
-class AuthenticationService(private val api: Api) {
+class AuthenticationService(private val webApi: WebApi) {
 
     suspend fun login(username: String, password: String): LoginResult {
 
-        val response = api.login(LoginRequest(username, password))
+        val response = webApi.login(LoginRequest(username, password))
 
         return if (response.isSuccessful) {
 

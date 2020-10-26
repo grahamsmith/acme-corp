@@ -14,7 +14,7 @@
 - Assuming given there is a refresh token this is some sort of oauth system.
 - The flows are incomplete so no direction given on what happens on the next warm & cold restart. Will assume for now that until the API says unauthorised to keep the user logged in. On 401 try to re use the refresh token to get another access token and on failure pop the user back to the login screen.
 - Need to check the API’s headers for the list response to see if it caches it. We should try to honour this as the client.
-- Was vague on the responses for the API, looked like everything *could* return a 200 OK with meta data, so tried them in chrome to confirm behaviour (this is cheap and quick), did this multiple times to establish the behaviour is consistent. Works as expected where api status codes are in fact returned.
+- Was vague on the responses for the API, looked like everything *could* return a 200 OK with meta data, so tried them in chrome to confirm behaviour (this is cheap and quick), did this multiple times to establish the behaviour is consistent (API seems designed to throw errors up occasionally). Works as expected where api status codes are in fact returned.
 - Logo is not great for app icon, probably won’t have time to fix this properly however spending some 1:1 time with the designer would be a good way to address this.
 - Logo is a PNG!
 - User messages are not internationalised. Would be good to send a `Language-Accepts` header, which can be multiple in priority order, based upon what the user selected in the Operating System. This would allow for messages to be returned either in the right language or with a reference to the in built strings file. Former is more flexible.

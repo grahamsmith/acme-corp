@@ -16,9 +16,11 @@ import com.grahamsmith.acme.profiles.repositories.ProfilesRepository
 import com.grahamsmith.acme.profiles.networking.ProfilesService
 import dagger.Module
 import dagger.Provides
+import okhttp3.Cache
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.io.File
 import javax.inject.Named
 import javax.inject.Singleton
 
@@ -35,6 +37,11 @@ class AppModule(private val app: Application) {
     @Singleton
     @Named("GenericErrorMessage")
     fun provideGenericErrorMessage(): String = app.resources.getString(R.string.generic_request_error_message)
+
+    @Provides
+    @Singleton
+    @Named("CacheDirectory")
+    fun provideCacheDirectory(): File = app.cacheDir
 
     //authentication
 
@@ -78,8 +85,9 @@ class AppModule(private val app: Application) {
 
     @Singleton
     @Provides
-    fun provideOkHttpClient(): OkHttpClient {
+    fun provideOkHttpClient(@Named("CacheDirectory") cacheDir: File): OkHttpClient {
         return OkHttpClient.Builder()
+            .cache(Cache(cacheDir, 10 * 1024 * 1024)) //10Mb
             .followRedirects(false)
             .build()
     }

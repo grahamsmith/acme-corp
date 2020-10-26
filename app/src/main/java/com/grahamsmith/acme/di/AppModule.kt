@@ -4,10 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import com.grahamsmith.acme.R
-import com.grahamsmith.acme.authentication.AuthenticationManager
-import com.grahamsmith.acme.authentication.AuthenticationStore
-import com.grahamsmith.acme.authentication.EncryptedSharedPreferencesFactory
-import com.grahamsmith.acme.authentication.IAuthenticationManager
+import com.grahamsmith.acme.authentication.*
 import com.grahamsmith.acme.authentication.networking.AuthenticationService
 import com.grahamsmith.acme.authentication.ui.LoginFragmentViewModel
 import com.grahamsmith.acme.networking.models.WebApi
@@ -56,7 +53,7 @@ class AppModule(private val app: Application) {
 
     @Provides
     @Singleton
-    fun provideAuthenticationStore(sharedPreferences: SharedPreferences) = AuthenticationStore(sharedPreferences)
+    fun provideAuthenticationStore(sharedPreferences: SharedPreferences): IAuthenticationStore = AuthenticationStore(sharedPreferences)
 
     @Provides
     @Singleton
@@ -64,7 +61,7 @@ class AppModule(private val app: Application) {
 
     @Provides
     @Singleton
-    fun provideAuthenticationManager(authenticationStore: AuthenticationStore, authenticationService: AuthenticationService): IAuthenticationManager = AuthenticationManager(authenticationStore, authenticationService)
+    fun provideAuthenticationManager(authenticationStore: IAuthenticationStore, authenticationService: AuthenticationService): IAuthenticationManager = AuthenticationManager(authenticationStore, authenticationService)
 
     // networking
 

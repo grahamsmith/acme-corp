@@ -3,9 +3,9 @@ package com.grahamsmith.acme.authentication
 import android.content.SharedPreferences
 import com.grahamsmith.acme.authentication.models.User
 
-class AuthenticationStore(private val sharedPreferences: SharedPreferences) {
+class AuthenticationStore(private val sharedPreferences: SharedPreferences) : IAuthenticationStore {
 
-    fun addUser(user: User) {
+    override fun addUser(user: User) {
 
         sharedPreferences
             .edit()
@@ -15,12 +15,13 @@ class AuthenticationStore(private val sharedPreferences: SharedPreferences) {
             .apply()
     }
 
-    fun isUserLoggedIn(): Boolean {
+    override fun isUserLoggedIn(): Boolean {
         return sharedPreferences.getString(EMAIL_ADDRESS, null) != null
     }
 
-    fun getCurrentUser(): User {
+    override fun getCurrentUser(): User {
 
+        //Todo - we could use delegated properties
         //KAHN! - getString is annotated with nullable as null can be passed as the default value
         val emailAddress = sharedPreferences.getString(EMAIL_ADDRESS, "").orEmpty()
         val authToken = sharedPreferences.getString(AUTH_TOKEN, "").orEmpty()
@@ -36,4 +37,11 @@ class AuthenticationStore(private val sharedPreferences: SharedPreferences) {
         private const val AUTH_TOKEN = "AUTH_TOKEN"
         private const val REFRESH_TOKEN = "REFRESH_TOKEN"
     }
+}
+
+interface IAuthenticationStore {
+
+    fun addUser(user: User)
+    fun isUserLoggedIn(): Boolean
+    fun getCurrentUser(): User
 }

@@ -5,7 +5,7 @@ import com.grahamsmith.acme.authentication.models.User
 import com.grahamsmith.acme.authentication.networking.AuthenticationService
 
 class AuthenticationManager(
-    private val authenticationStore: AuthenticationStore,
+    private val authenticationStore: IAuthenticationStore,
     private val authenticationService: AuthenticationService
 ) : IAuthenticationManager {
 

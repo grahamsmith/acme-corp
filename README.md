@@ -1,5 +1,12 @@
 # Acme Corp
 
+## Features
+
+- All Kotlin
+- Encrypted Shared Preferences for user credential storage - learned a new thing.
+- DI
+- LiveData / Coroutines
+
 ## Notes
 
 ### Initial thoughts
@@ -10,7 +17,7 @@
 - Was vague on the responses for the API, looked like everything *could* return a 200 OK with meta data, so tried them in chrome to confirm behaviour (this is cheap and quick), did this multiple times to establish the behaviour is consistent. Works as expected where api status codes are in fact returned.
 - Logo is not great for app icon, probably won’t have time to fix this properly however spending some 1:1 time with the designer would be a good way to address this.
 - Logo is a PNG!
-- User messages are not internationalised. Would be good to send a language accepts header, which can be multiple in priority order, based upon what the user selected in the Operating System. This would allow for messages to be returned either in the right language or with a reference to the in built strings file. Former is more flexible.
+- User messages are not internationalised. Would be good to send a `Language-Accepts` header, which can be multiple in priority order, based upon what the user selected in the Operating System. This would allow for messages to be returned either in the right language or with a reference to the in built strings file. Former is more flexible.
 - Given the amount of time probably need to use the in built design elements of Material design.
 - Hate the register button, it is not a “real” button has a small touch area and also makes registration a 2nd class citizen. The App can be “smart” in the future about what to show and how to show it.
 - The placeholder text colour will not meet WCAG 2.0 standards as the contrast is not high enough. Speak to designer as we can easily fix this.

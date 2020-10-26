@@ -3,9 +3,9 @@ package com.grahamsmith.acme.authentication.networking
 import com.grahamsmith.acme.authentication.networking.models.LoginRequest
 import com.grahamsmith.acme.networking.models.WebApi
 
-class AuthenticationService(private val webApi: WebApi) {
+class AuthenticationService(private val webApi: WebApi) : IAuthenticationService {
 
-    suspend fun login(username: String, password: String): LoginResult {
+    override suspend fun login(username: String, password: String): LoginResult {
 
         val response = webApi.login(LoginRequest(username, password))
 
@@ -31,6 +31,10 @@ class AuthenticationService(private val webApi: WebApi) {
             LoginResult(userMessage = userMessage)
         }
     }
+}
+
+interface IAuthenticationService {
+    suspend fun login(username: String, password: String): LoginResult
 }
 
 data class LoginResult(

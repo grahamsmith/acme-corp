@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import com.grahamsmith.acme.R
 import com.grahamsmith.acme.authentication.*
 import com.grahamsmith.acme.authentication.networking.AuthenticationService
+import com.grahamsmith.acme.authentication.networking.IAuthenticationService
 import com.grahamsmith.acme.authentication.ui.LoginFragmentViewModel
 import com.grahamsmith.acme.networking.models.WebApi
 import com.grahamsmith.acme.profiles.networking.ProfilesService
@@ -34,7 +35,8 @@ class AppModule(private val app: Application) {
     @Provides
     @Singleton
     @Named("GenericErrorMessage")
-    fun provideGenericErrorMessage(): String = app.resources.getString(R.string.generic_request_error_message)
+    fun provideGenericErrorMessage(): String =
+        app.resources.getString(R.string.generic_request_error_message)
 
     @Provides
     @Singleton
@@ -49,19 +51,25 @@ class AppModule(private val app: Application) {
 
     @Provides
     @Singleton
-    fun provideSharedPreferences(sharedPreferencesFactory: EncryptedSharedPreferencesFactory) = sharedPreferencesFactory.createSharedPreferences()
+    fun provideSharedPreferences(sharedPreferencesFactory: EncryptedSharedPreferencesFactory) =
+        sharedPreferencesFactory.createSharedPreferences()
 
     @Provides
     @Singleton
-    fun provideAuthenticationStore(sharedPreferences: SharedPreferences): IAuthenticationStore = AuthenticationStore(sharedPreferences)
+    fun provideAuthenticationStore(sharedPreferences: SharedPreferences): IAuthenticationStore =
+        AuthenticationStore(sharedPreferences)
 
     @Provides
     @Singleton
-    fun provideAuthenticationService(webApi: WebApi) = AuthenticationService(webApi)
+    fun provideAuthenticationService(webApi: WebApi): IAuthenticationService =
+        AuthenticationService(webApi)
 
     @Provides
     @Singleton
-    fun provideAuthenticationManager(authenticationStore: IAuthenticationStore, authenticationService: AuthenticationService): IAuthenticationManager = AuthenticationManager(authenticationStore, authenticationService)
+    fun provideAuthenticationManager(
+        authenticationStore: IAuthenticationStore,
+        authenticationService: IAuthenticationService
+    ): IAuthenticationManager = AuthenticationManager(authenticationStore, authenticationService)
 
     // networking
 
@@ -94,26 +102,35 @@ class AppModule(private val app: Application) {
 
     @Provides
     @Singleton
-    fun provideMainActivityViewModel(authenticationManager: IAuthenticationManager) = MainActivityViewModel(authenticationManager)
+    fun provideMainActivityViewModel(authenticationManager: IAuthenticationManager) =
+        MainActivityViewModel(authenticationManager)
 
     // login
 
     @Provides
     @Singleton
-    fun provideLoginFragmentViewModel(authenticationManager: IAuthenticationManager, @Named("GenericErrorMessage") genericErrorMessageString: String) = LoginFragmentViewModel(authenticationManager, genericErrorMessageString)
+    fun provideLoginFragmentViewModel(
+        authenticationManager: IAuthenticationManager,
+        @Named("GenericErrorMessage") genericErrorMessageString: String
+    ) = LoginFragmentViewModel(authenticationManager, genericErrorMessageString)
 
     // profiles
 
     @Provides
     @Singleton
-    fun provideProfilesFragmentViewModel(profilesRepository: ProfilesRepository, @Named("GenericErrorMessage") genericErrorMessageString: String) = ProfilesFragmentViewModel(profilesRepository, genericErrorMessageString)
+    fun provideProfilesFragmentViewModel(
+        profilesRepository: ProfilesRepository,
+        @Named("GenericErrorMessage") genericErrorMessageString: String
+    ) = ProfilesFragmentViewModel(profilesRepository, genericErrorMessageString)
 
     @Provides
     @Singleton
-    fun provideProfilesRepository(profilesService: ProfilesService) = ProfilesRepository(profilesService)
+    fun provideProfilesRepository(profilesService: ProfilesService) =
+        ProfilesRepository(profilesService)
 
     @Provides
     @Singleton
-    fun provideProfilesService(authenticationManager: IAuthenticationManager, webApi: WebApi) = ProfilesService(authenticationManager, webApi)
+    fun provideProfilesService(authenticationManager: IAuthenticationManager, webApi: WebApi) =
+        ProfilesService(authenticationManager, webApi)
 
 }

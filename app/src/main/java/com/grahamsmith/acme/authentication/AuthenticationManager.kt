@@ -2,11 +2,11 @@ package com.grahamsmith.acme.authentication
 
 import com.grahamsmith.acme.authentication.exceptions.LoginFailureException
 import com.grahamsmith.acme.authentication.models.User
-import com.grahamsmith.acme.authentication.networking.AuthenticationService
+import com.grahamsmith.acme.authentication.networking.IAuthenticationService
 
 class AuthenticationManager(
     private val authenticationStore: IAuthenticationStore,
-    private val authenticationService: AuthenticationService
+    private val authenticationService: IAuthenticationService
 ) : IAuthenticationManager {
 
     override fun isUserLoggedIn() = authenticationStore.isUserLoggedIn()

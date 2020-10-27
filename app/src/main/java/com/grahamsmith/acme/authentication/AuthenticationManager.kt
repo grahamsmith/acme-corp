@@ -27,7 +27,7 @@ class AuthenticationManager(
         }
     }
 
-    override fun storeUser(user: User) = authenticationStore.addUser(user)
+    private fun storeUser(user: User) = authenticationStore.addUser(user)
 }
 
 interface IAuthenticationManager {
@@ -35,6 +35,5 @@ interface IAuthenticationManager {
     fun isUserLoggedIn(): Boolean
     fun getUser(): User
     suspend fun login(username: String, password: String): Boolean
-    fun storeUser(user: User)
 }
 
